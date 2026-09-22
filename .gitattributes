@@ -1,0 +1,7 @@
+# Keep text consistent across macOS, Linux and Windows checkouts.
+* text=auto eol=lf
+
+# Product images and reproducible renderer inputs belong in the repository.
+*.png binary
+*.gif binary
+*.zip binary

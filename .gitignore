@@ -1,0 +1,25 @@
+# Local OS files and environment configuration.
+.DS_Store
+.env
+.env.*
+
+# Installed dependencies and Python caches.
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Releases, preview renders, test databases and filestores.
+/dist/
+
+# Local test output and browser state.
+*.log
+/.coverage
+/htmlcov/
+/coverage/
+/test-results/
+/playwright-report/
+/playwright/.auth/

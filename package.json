@@ -1,0 +1,14 @@
+{
+  "name": "odoo-minimalism-theme-tools",
+  "private": true,
+  "scripts": {
+    "test": "node minimalism_theme/tests/test_preferences.mjs && node minimalism_theme/tests/test_stylesheets.cjs",
+    "test:browser": "node minimalism_theme/tests/test_browser.cjs && node minimalism_theme/tests/test_night_mode.cjs && node minimalism_theme/tests/test_edge_cases.cjs",
+    "capture": "node tools/capture_screenshots.cjs",
+    "render": "node tools/render_marketplace.cjs",
+    "build": "python3 tools/build_release.py"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}
