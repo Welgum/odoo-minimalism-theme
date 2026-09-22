@@ -7,5 +7,5 @@
 }
 
 @function shade-color($color, $weight) {
-    @return mix($o-main-text-color, $color, $weight);
+    @return mix($o-gray-900, $color, $weight);
 }

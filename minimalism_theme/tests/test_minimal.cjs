@@ -26,9 +26,9 @@ const {chromium}=require('playwright');
   };
   const unexpected = await rpc('ir.module.module','search',[[['name','in',['contacts','crm','project','calendar','mail']],['state','=','installed']]]);
   assert.deepEqual(unexpected, [], 'Minimal install must not bring in optional apps');
-  const config=await rpc('res.config.settings','create',[{min_accent_preset:'blue'}]);
+  const config=await rpc('res.config.settings','create',[{min_accent_preset:'purple'}]);
   await rpc('res.config.settings','set_values',[[config]]);
   await rpc('res.partner','create',[{name:'Min lifecycle retained partner'}]);
-  assert.deepEqual(errors,[]);console.log(`PASS ${db}: ZIP-only dependencies, main/lazy dark CSS, persistence, native day restoration, no browser errors; upgrade/uninstall fixtures saved`);
+  assert.deepEqual(errors,[]);console.log(`PASS ${db}: ZIP-only dependencies, version-specific dark CSS, persistence, native day restoration, no browser errors; upgrade/uninstall fixtures saved`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <t t-name="minimalism_theme.AppearanceDialog">
         <Dialog title="title" size="'md'" bodyClass="'o_min_appearance'">
-            <p class="o_min_eyebrow">Minimalism · Odoo 19</p>
+            <p class="o_min_eyebrow">Minimalism · Odoo 18</p>
             <h3 class="mb-3">A little less. A lot clearer.</h3>
             <label class="o_min_enable d-flex align-items-center gap-3 mb-4">
                 <input type="checkbox" class="form-check-input m-0"

@@ -5,5 +5,5 @@ cd "$(dirname "$0")/.."
 mkdir -p dist/compose/pgdata dist/compose/odoodata
 chmod 777 dist/compose/pgdata dist/compose/odoodata
 docker compose up -d db
-docker compose run --rm odoo odoo -d minimalism19 -i minimalism_theme,contacts,crm,project,calendar --without-demo --stop-after-init
+docker compose run --rm odoo odoo -d minimalism18 -i minimalism_theme,contacts,crm,project,calendar --without-demo=all --stop-after-init
 docker compose up -d odoo

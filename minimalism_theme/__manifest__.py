@@ -1,13 +1,13 @@
 {
     "name": "Minimalism Backend Theme",
-    "summary": "Odoo 19 Community backend theme with dark mode and seven accent colors",
-    "version": "19.0.1.0.1",
+    "summary": "Odoo 18 Community backend theme with dark mode and seven accent colors",
+    "version": "18.0.1.0.0",
     "category": "Themes/Backend",
     "author": "RivetFox",
     "website": "https://rivetfox.pro",
     "license": "LGPL-3",
     "description": """
-Minimalism is a minimal, open-source backend theme for Odoo 19 Community,
+Minimalism is a minimal, open-source backend theme for Odoo 18 Community,
 developed by RivetFox. A shadcn/ui-inspired interface with neutral surfaces,
 fine borders, rounded controls, and seven administrator-managed accent presets.
 
@@ -49,8 +49,7 @@ third-party themes are not verified. Not compatible with Odoo Online.
             "minimalism_theme/static/src/xml/appearance_dialog.xml",
             "minimalism_theme/static/src/xml/mode_toggle.xml",
         ],
-        # Private bundles leave Odoo's original appearance intact when disabled.
-        # Including the native dark bundles also includes installed apps' dark rules.
+        # Private bundles preserve the native appearance when the theme is disabled.
         "minimalism_theme.assets_web_dark": [
             ("include", "web.assets_web_dark"),
             ("before", "web/static/src/scss/primary_variables.scss", "minimalism_theme/static/src/scss/dark_primary.scss"),
