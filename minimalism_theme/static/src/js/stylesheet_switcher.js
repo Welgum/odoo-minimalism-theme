@@ -44,8 +44,8 @@ export class StylesheetSwitcher {
         const links = [];
         const promise = (async () => {
             const bundles = mode === "dark"
-                ? ["minimalism_theme.assets_web_dark", "minimalism_theme.assets_backend_lazy_dark"]
-                : ["web.assets_web", "web.assets_backend_lazy"];
+                ? ["minimalism_theme.assets_web_dark"]
+                : ["web.assets_web"];
             let timer;
             let descriptors;
             try {

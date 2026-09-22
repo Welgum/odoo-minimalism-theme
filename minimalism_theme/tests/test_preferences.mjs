@@ -97,7 +97,7 @@ const serviceSource = (await readFile(new URL("../static/src/js/theme_service.js
 const { minThemeService } = await import(`data:text/javascript;base64,${Buffer.from(serviceSource).toString("base64")}`);
 const env = { bus: { trigger() {} } };
 const notices = [];
-const deps = { notification: { add: text => notices.push(text) } };
+const deps = { notification: { add: text => notices.push(text) }, user: { userId: 7 } };
 const service = await minThemeService.start(env, deps);
 assert.equal(classes.has("o_min_theme"), false);
 await service.toggleMode();

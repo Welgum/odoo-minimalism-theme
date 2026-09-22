@@ -27,4 +27,4 @@ Minimalism does not include MuK's app launcher, appsbar, chatter resizer, refres
 
 The original theme provides settings persistence, sanitized session data, preference normalization, transactional CSS staging/restoration, Owl controls, graph integration and regression tools. Every live namespace is changed: `minimalism_theme`, `min_`, `o_min_`, `--min-`, `data-min-`, `MIN:APPEARANCE_CHANGED`, and development variables prefixed `MIN_`.
 
-Settings and native asset order target Odoo 19 only. No version-renamed backports are shipped. CSS is screen-only, uses logical properties where direction matters, and avoids changing z-index, scroll ownership, drag transforms or business actions.
+This branch targets Odoo 17 Community. The `16.0`, `17.0`, `18.0` and `19.0` branches adapt native asset bundles, settings markup, user services, patch APIs and chart APIs for each version; `main` follows `19.0`. CSS is screen-only, uses logical properties where direction matters, and avoids changing z-index, scroll ownership, drag transforms or business actions.

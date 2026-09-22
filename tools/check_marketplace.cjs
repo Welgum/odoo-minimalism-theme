@@ -42,7 +42,8 @@ const root=path.resolve(__dirname,'..');
     const png=await page.screenshot();
     if(time===0)first=png;
     if(time===9&&!first.equals(png)){
-     // Chrome can round a few antialiased pixels differently at rotated corners.
+     // Chrome can vary the final 8-bit rounding by one level across edges.
+     // Ignore only that quantization noise; retain strict area and peak limits.
      // Decode pixels instead of requiring byte-identical PNG compression/rasterization.
      const rgb=buffer=>{
       const result=spawnSync('ffmpeg',['-v','error','-i','pipe:0','-f','rawvideo','-pix_fmt','rgb24','pipe:1'],{input:buffer,maxBuffer:width*height*4});
@@ -51,7 +52,7 @@ const root=path.resolve(__dirname,'..');
      const a=rgb(first),b=rgb(png);let changed=0,maxDelta=0;
      for(let pixel=0;pixel<a.length;pixel+=3){
       const delta=Math.max(...[0,1,2].map(channel=>Math.abs(a[pixel+channel]-b[pixel+channel])));
-      if(delta)changed++;maxDelta=Math.max(maxDelta,delta);
+      if(delta>1)changed++;maxDelta=Math.max(maxDelta,delta);
      }
      if(changed>width*height*.0001||maxDelta>8){
       await fs.writeFile(path.join(out,`${name}-loop-start.png`),first);await fs.writeFile(path.join(out,`${name}-loop-end.png`),png);

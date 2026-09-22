@@ -18,14 +18,14 @@ assert.ok(origin && db && process.env.MIN_ALLOW_TEST_WRITES === '1', 'Disposable
   const session=await first.evaluate(async()=> (await (await fetch('/web/session/get_session_info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',method:'call',params:{},id:1})})).json()).result);
   assert.deepEqual(Object.keys(session.minimalism_theme),['accent_preset']);
   assert.ok(session.uid && session.user_context,'Native session keys are preserved');
-  const second=await context.newPage();await second.goto(`${origin}/odoo`);await second.waitForSelector('body.o_min_theme');
+  const second=await context.newPage();await second.goto(`${origin}/web`);await second.waitForSelector('body.o_min_theme');
   await first.locator('.o_min_mode_toggle button').click();
   await first.waitForSelector('body[data-min-mode=dark]');await second.waitForSelector('body[data-min-mode=dark]');
   await first.locator('.o_user_menu button').click();await first.getByText('Appearance',{exact:true}).click();
   await first.getByLabel('Compact',{exact:true}).check();await second.waitForSelector('body[data-min-density=compact]');
   await second.reload();await second.waitForSelector('body[data-min-density=compact][data-min-mode=dark]');
   await first.getByLabel('Use Minimalism theme').uncheck();await second.waitForSelector('body:not(.o_min_theme)');
-  await second.goto(`${origin}/odoo/action-minimalism_theme.action_min_theme_settings`);
+  await second.goto(`${origin}/web#action=minimalism_theme.action_min_theme_settings`);
   await second.waitForSelector('[name=min_accent_preset]');
   assert.equal(await second.locator('[name=min_accent_preset] label').count(),7);
   const swatches=await second.locator('[name=min_accent_preset] label').evaluateAll(nodes=>nodes.map(node=>getComputedStyle(node,'::before').backgroundColor));
@@ -33,7 +33,9 @@ assert.ok(origin && db && process.env.MIN_ALLOW_TEST_WRITES === '1', 'Disposable
   await first.getByRole('button',{name:'Reset defaults',exact:true}).click();
   await second.waitForSelector('body.o_min_theme[data-min-density=comfortable][data-min-mode=light]');
   await first.getByRole('button',{name:'Done',exact:true}).click();
-  await first.goto(`${origin}/odoo/action-crm.crm_lead_action_pipeline`);
+  // Legacy routes keep the selected application; switch via its native menu.
+  await first.locator('.o_navbar_apps_menu button').first().click();
+  await first.locator('[data-menu-xmlid="crm.crm_menu_root"]').click();
   await first.waitForSelector('.o_menu_sections');
   await first.evaluate(()=>{const spacer=document.createElement('span');spacer.id='min-growing-tray';spacer.style.cssText='display:block;flex:none;width:550px';document.querySelector('.o_menu_systray').prepend(spacer)});
   await first.waitForFunction(()=>document.querySelector('.o_menu_sections_more')?.getClientRects().length);
@@ -44,7 +46,7 @@ assert.ok(origin && db && process.env.MIN_ALLOW_TEST_WRITES === '1', 'Disposable
   await first.waitForFunction(()=>document.body.scrollWidth<=innerWidth);
   await first.screenshot({path:'dist/mobile-crm.png'});
   await first.setViewportSize({width:1440,height:960});
-  await first.goto(`${origin}/odoo/action-contacts.action_contacts`);
+  await first.goto(`${origin}/web#action=contacts.action_contacts`);
   await first.waitForSelector('.o_searchview_input');
   await first.locator('.o_searchview_input').focus();
   assert.equal(await first.locator('.o_searchview_input').evaluate(el=>getComputedStyle(el).outlineStyle),'none');
