@@ -5,10 +5,10 @@ assert os.environ.get("MIN_ALLOW_TEST_WRITES") == "1", "Explicit disposable writ
 assert env.cr.dbname == os.environ.get("MIN_TEST_DB"), "Database must match the explicit disposable target"
 module=env['ir.module.module'].search([('name','=','minimalism_theme')])
 assert module.state=='installed',module.state
-assert env['ir.config_parameter'].sudo().get_param('minimalism_theme.accent_preset')=='blue'
+assert env['ir.config_parameter'].sudo().get_param('minimalism_theme.accent_preset')=='purple'
 partners=env['res.partner'].search([('name','=','Min lifecycle retained partner')])
 assert partners, 'Upgrade lost the unrelated partner'
-print('UPGRADE PRESERVED:',module.read(['state','latest_version']), 'Blue preset and partner')
+print('UPGRADE PRESERVED:',module.read(['state','latest_version']), 'Purple preset and partner')
 module.button_immediate_uninstall()
 env.invalidate_all()
 assert module.state=='uninstalled',module.state

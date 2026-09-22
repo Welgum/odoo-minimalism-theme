@@ -6,9 +6,9 @@ import { NavBar } from "@web/webclient/navbar/navbar";
 
 // Counters and company names can grow without a window resize. Ask the native
 // overflow algorithm to remeasure; leave menu ownership and navigation in Odoo.
-patch(NavBar.prototype, {
+patch(NavBar.prototype, "minimalism_theme.navbar", {
     setup() {
-        super.setup(...arguments);
+        this._super(...arguments);
         let observer;
         let frame;
         let measuredWidth;

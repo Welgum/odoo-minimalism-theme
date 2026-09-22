@@ -1,3 +1,4 @@
+name: minimalism-theme-16
 # Local disposable development stack. Bind mounts avoid consuming Docker's disk.
 services:
   db:
@@ -14,12 +15,12 @@ services:
       timeout: 3s
       retries: 30
   odoo:
-    image: odoo:19.0
+    image: odoo:16.0
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "127.0.0.1:${MIN_DEV_PORT:-19069}:8069"
+      - "127.0.0.1:${MIN_DEV_PORT:-19066}:8069"
     environment:
       HOST: db
       USER: odoo
@@ -27,4 +28,4 @@ services:
     volumes:
       - .:/mnt/extra-addons:ro
       - ./dist/compose/odoodata:/var/lib/odoo
-    command: ["odoo", "-d", "minimalism19", "--db-filter=^minimalism19.*$", "--http-interface=0.0.0.0"]
+    command: ["odoo", "-d", "minimalism16", "--db-filter=^minimalism16.*$", "--http-interface=0.0.0.0"]

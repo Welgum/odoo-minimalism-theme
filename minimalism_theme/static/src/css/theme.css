@@ -84,14 +84,14 @@
 
     /* Semantic variants retain their original status meaning. */
     .o_web_client.o_min_theme .btn { transition-property: box-shadow; }
-    .o_web_client.o_min_theme .btn:is(.btn-primary, .btn-secondary, .btn-outline-primary, .btn-outline-secondary):not(.o_arrow_button) {
+    .o_web_client.o_min_theme .btn:is(.btn-primary, .btn-odoo, .btn-secondary, .btn-outline-primary, .btn-outline-secondary):not(.o_arrow_button) {
         border-radius: var(--min-radius);
         border-width: 1px;
         font-weight: 500;
         box-shadow: var(--min-shadow-small);
         transition: box-shadow 120ms ease;
     }
-    .o_web_client.o_min_theme .btn-primary:not(.o_arrow_button) {
+    .o_web_client.o_min_theme .btn:is(.btn-primary, .btn-odoo):not(.o_arrow_button) {
         --btn-bg: var(--min-accent);
         --btn-color: var(--min-accent-ink);
         --btn-border-color: var(--min-accent);
@@ -105,7 +105,7 @@
         color: var(--min-accent-ink);
         border-color: var(--min-accent);
     }
-    .o_web_client.o_min_theme .btn-primary:not(.o_arrow_button):not(:disabled):hover { box-shadow: inset 0 0 0 100px #00000012; }
+    .o_web_client.o_min_theme .btn:is(.btn-primary, .btn-odoo):not(.o_arrow_button):not(:disabled):hover { box-shadow: inset 0 0 0 100px #00000012; }
     .o_web_client.o_min_theme .btn:is(.btn-secondary, .btn-outline-primary, .btn-outline-secondary):not(.o_arrow_button) {
         --btn-border-color: var(--min-input);
         --btn-hover-border-color: var(--min-ring);
@@ -205,20 +205,20 @@
     .o_web_client.o_min_theme .o_form_statusbar { background: var(--min-surface); border-bottom-color: var(--min-line); }
     .o_web_client.o_min_theme .o_statusbar_status .o_arrow_button { font-weight: 500; }
     .o_web_client.o_min_theme .o_notebook .nav-tabs { background: var(--min-surface); border-bottom: 1px solid var(--min-border); gap: 0.25rem; }
-    .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link { color: var(--min-muted); font-weight: 500; border-radius: 0.375rem 0.375rem 0 0; }
+    .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link { transition: box-shadow 120ms ease; color: var(--min-muted); font-weight: 500; border-radius: 0.375rem 0.375rem 0 0; }
     .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link.active {
         background: var(--min-surface); color: var(--min-ink); border-color: transparent;
         box-shadow: inset 0 -2px 0 var(--min-accent);
     }
     .o_web_client.o_min_theme .oe_button_box .oe_stat_button { border-color: var(--min-line); }
     .o_web_client.o_min_theme .o_form_view .o_form_nosheet,
-    .o_web_client.o_min_theme .o_base_settings_view .settings { background: var(--min-surface); color: var(--min-ink); }
-    .o_web_client.o_min_theme .o_base_settings_view .o_form_renderer {
+    .o_web_client.o_min_theme .o_base_settings .settings { background: var(--min-surface); color: var(--min-ink); }
+    .o_web_client.o_min_theme .o_base_settings {
         --settings__tab-bg: var(--min-bg); --settings__tab-bg--active: var(--min-subtle);
         --settings__tab-color: var(--min-ink); --settings__title-bg: var(--min-bg);
     }
-    .o_web_client.o_min_theme .o_base_settings_view .settings_tab .tab:is(:hover, .selected) { color: var(--min-ink); }
-    .o_web_client.o_min_theme .o_base_settings_view .settingSearchHeader { background: var(--min-subtle); color: var(--min-ink); }
+    .o_web_client.o_min_theme .o_base_settings .settings_tab .tab:is(:hover, .selected) { color: var(--min-ink); }
+    .o_web_client.o_min_theme .o_base_settings .settingSearchHeader { background: var(--min-subtle); color: var(--min-ink); }
 
     /* No transforms or overflow clipping on draggable cards or color markers. */
     .o_web_client.o_min_theme .o_kanban_renderer .o_kanban_record:not(.o_kanban_ghost) {
@@ -244,12 +244,12 @@
     .o_web_client.o_min_theme :is(.o_notification, .toast) { background: var(--min-surface); color: var(--min-ink); border: 1px solid var(--min-border); border-radius: var(--min-radius); box-shadow: var(--min-shadow); }
 
     /* Native private dark assets cover Calendar, Discuss, CRM, Project and editors. */
-    .o_web_client.o_min_theme[data-min-mode="dark"] .o_form_view :is(.o-mail-ChatterContainer, .o-mail-Chatter, .o-mail-Chatter-top) { background-color: var(--min-bg); color: var(--min-ink); }
-    .o_web_client.o_min_theme[data-min-mode="dark"] .o_form_view .o-mail-Chatter .text-action,
-    .o_web_client.o_min_theme[data-min-mode="dark"] .o-mail-ActivityButton.btn-dark,
-    .o_web_client.o_min_theme[data-min-mode="dark"] .o-mail-ActivityButton .text-dark:not(.text-danger, .text-warning, .text-success) { color: var(--min-muted) !important; }
-    .o_web_client.o_min_theme .o-mail-Composer-inputContainer:focus-within { outline: 2px solid var(--min-ring); outline-offset: 1px; }
-    .o_web_client.o_min_theme .o-mail-Composer-inputContainer :is(textarea, [contenteditable]):focus-visible { outline: none; }
+    .o_web_client.o_min_theme[data-min-mode="dark"] .o_form_view :is(.o_ChatterContainer, .o_Chatter, .o_ChatterTopbar) { background-color: var(--min-bg); color: var(--min-ink); }
+    .o_web_client.o_min_theme[data-min-mode="dark"] .o_form_view .o_ChatterTopbar_button.btn-light:not(.btn-primary),
+    .o_web_client.o_min_theme[data-min-mode="dark"] .o_ActivityButtonView.btn-dark,
+    .o_web_client.o_min_theme[data-min-mode="dark"] .o_ActivityButtonView .text-dark:not(.text-danger, .text-warning, .text-success) { color: var(--min-muted) !important; }
+    .o_web_client.o_min_theme .o_ComposerTextInput:focus-within { outline: 2px solid var(--min-ring); outline-offset: 1px; }
+    .o_web_client.o_min_theme .o_ComposerTextInput :is(textarea, [contenteditable]):focus-visible { outline: none; }
     .o_web_client.o_min_theme .o-discuss-ChannelMember.o-offline { opacity: 1; }
     .o_web_client.o_min_theme .o_pivot :is(thead, .o_pivot_header_cell_closed, .o_pivot_header_cell_opened) { background: var(--min-subtle); color: var(--min-ink); }
 

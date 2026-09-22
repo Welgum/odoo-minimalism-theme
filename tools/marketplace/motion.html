@@ -12,17 +12,17 @@
 <div class="canvas" id="daynight">
  <div class="header"><div><div class="eyebrow">PERSONAL LIGHT + DARK</div><h1>A workspace for every hour.</h1></div><div class="modes"><span id="day-label" class="active">LIGHT</span><span id="night-label">DARK</span></div></div>
  <div class="screen"><div class="screenbar">MINIMALISM / YOUR EVERYDAY ODOO</div><div class="screenbody"><img src="../../minimalism_theme/static/description/backend-list.png" alt="Actual Contacts list in light mode"><img id="night-screen" src="../../minimalism_theme/static/description/night-mode.png" alt="The same Contacts view in dark mode" style="clip-path:inset(0 100% 0 0)"><div class="reveal-line" id="reveal-line"></div></div></div>
- <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>19</span> COMMUNITY SCREENS</span></div>
+ <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>16</span> COMMUNITY SCREENS</span></div>
 </div>
 <div class="canvas accent" id="accents" style="display:none">
  <div class="header"><div class="eyebrow">ADMINISTRATOR-MANAGED PRESETS</div><h1>One workspace. Seven accents.</h1><p class="description">A shared accent. Quiet surfaces. Your own light or dark mode.</p></div><div class="number" id="counter">01 / 07</div>
  <div class="presets" id="presets"></div>
  <div class="screen"><div class="screenbar" id="accent-title">YELLOW / LIGHT MODE</div><div class="screenbody"><img id="accent-screen" src="screens/preset-yellow.png" alt="Real Odoo Contacts with the selected accent"></div></div>
- <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>19</span> COMMUNITY SCREENS</span></div>
+ <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>16</span> COMMUNITY SCREENS</span></div>
 </div>
 <script>
 const params=new URLSearchParams(location.search),accentMode=params.get('type')==='accents';
-document.querySelectorAll('[data-odoo-version]').forEach(el=>el.textContent=params.get('odoo')||'19');
+document.querySelectorAll('[data-odoo-version]').forEach(el=>el.textContent=params.get('odoo')||'16');
 document.querySelector('#daynight').style.display=accentMode?'none':'block';document.querySelector('#accents').style.display=accentMode?'block':'none';
 const presets=[['yellow','#eab308'],['blue','#2563eb'],['green','#15803d'],['purple','#7c3aed'],['pink','#db2777'],['orange','#c2410c'],['red','#dc2626']];
 document.querySelector('#presets').innerHTML=presets.map(([name,color])=>`<div class="preset"><i style="--swatch:${color}"></i>${name[0].toUpperCase()+name.slice(1)}</div>`).join('');

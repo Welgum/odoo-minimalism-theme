@@ -1,13 +1,13 @@
 {
     "name": "Minimalism Backend Theme",
-    "summary": "Odoo 19 Community backend theme with dark mode and seven accent colors",
-    "version": "19.0.1.0.1",
+    "summary": "Odoo 16 Community backend theme with dark mode and seven accent colors",
+    "version": "16.0.1.0.0",
     "category": "Themes/Backend",
     "author": "RivetFox",
     "website": "https://rivetfox.pro",
     "license": "LGPL-3",
     "description": """
-Minimalism is a minimal, open-source backend theme for Odoo 19 Community,
+Minimalism is a minimal, open-source backend theme for Odoo 16 Community,
 developed by RivetFox. A shadcn/ui-inspired interface with neutral surfaces,
 fine borders, rounded controls, and seven administrator-managed accent presets.
 
@@ -46,26 +46,27 @@ third-party themes are not verified. Not compatible with Odoo Online.
             "minimalism_theme/static/src/js/mode_toggle.js",
             "minimalism_theme/static/src/js/navbar.js",
             "minimalism_theme/static/src/js/appearance_dialog.js",
+            "minimalism_theme/static/src/js/graph_renderer.js",
             "minimalism_theme/static/src/xml/appearance_dialog.xml",
             "minimalism_theme/static/src/xml/mode_toggle.xml",
         ],
-        # Private bundles leave Odoo's original appearance intact when disabled.
-        # Including the native dark bundles also includes installed apps' dark rules.
+        # Private bundles preserve the native appearance when the theme is disabled.
         "minimalism_theme.assets_web_dark": [
-            ("include", "web.assets_web_dark"),
+            ("include", "web.dark_mode_assets_backend"),
+            ("include", "web.assets_backend_legacy_lazy"),
             ("before", "web/static/src/scss/primary_variables.scss", "minimalism_theme/static/src/scss/dark_primary.scss"),
             ("before", "web/static/src/scss/bootstrap_overridden.scss", "minimalism_theme/static/src/scss/dark_bootstrap.scss"),
             ("after", "web/static/lib/bootstrap/scss/_functions.scss", "minimalism_theme/static/src/scss/dark_functions.scss"),
             "minimalism_theme/static/src/scss/dark_components.scss",
         ],
-        "minimalism_theme.assets_backend_lazy_dark": [
-            ("include", "web.assets_backend_lazy_dark"),
+        "minimalism_theme.assets_common_dark": [
+            ("include", "web.dark_mode_assets_common"),
             ("before", "web/static/src/scss/primary_variables.scss", "minimalism_theme/static/src/scss/dark_primary.scss"),
-            ("before", "web/static/src/scss/bootstrap_overridden.scss", "minimalism_theme/static/src/scss/dark_bootstrap.scss"),
             ("after", "web/static/lib/bootstrap/scss/_functions.scss", "minimalism_theme/static/src/scss/dark_functions.scss"),
         ],
-        "web.assets_backend_lazy": [
-            "minimalism_theme/static/src/js/graph_renderer.js",
+        "minimalism_theme.assets_backend_light": [
+            ("include", "web.assets_backend"),
+            ("include", "web.assets_backend_legacy_lazy"),
         ],
     },
     "installable": True,

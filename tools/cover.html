@@ -40,7 +40,7 @@ h1{font-family:"RivetFox Brand",Arial,sans-serif;font-size:77px;line-height:1.02
 <div class="cover" id="cover">
  <div class="top">
   <div class="rf-lockup"><img src="branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div>
-  <div class="edition">Odoo <span data-odoo-version>19</span> Community</div>
+  <div class="edition">Odoo <span data-odoo-version>16</span> Community</div>
  </div>
  <div class="copy"><p class="kicker">A calmer Odoo backend</p><h1>Minimalism.</h1><p class="tagline">Less noise.<br> More room to focus.</p><div class="features"><span>7 accents</span><span>Light + dark</span></div></div>
  <div class="stage"><div class="chrome"><i></i><i></i><i></i><b>YOUR EVERYDAY ODOO</b></div><div class="viewport"><img id="old" src="../minimalism_theme/static/description/backend-list.png" alt="Actual Odoo Contacts in light mode"><img id="next" class="view-new" src="../minimalism_theme/static/description/night-mode.png" alt="Alternate appearance of the same Odoo view"></div></div>
@@ -49,7 +49,7 @@ h1{font-family:"RivetFox Brand",Arial,sans-serif;font-size:77px;line-height:1.02
 </div>
 <script>
 const params=new URLSearchParams(location.search);document.querySelector('#cover').classList.toggle('thumbnail',params.get('format')==='thumbnail');
-document.querySelectorAll('[data-odoo-version]').forEach(el=>el.textContent=params.get('odoo')||'19');
+document.querySelectorAll('[data-odoo-version]').forEach(el=>el.textContent=params.get('odoo')||'16');
 const scenes=[
  {src:'../minimalism_theme/static/description/backend-list.png',label:'01 / LIGHT MODE',paper:'#fafafa',ink:'#18181b',muted:'#65656f',line:'#d4d4d8',panel:'#ffffff',accent:'#2563eb'},
  {src:'../minimalism_theme/static/description/night-mode.png',label:'02 / DARK MODE',paper:'#09090b',ink:'#fafafa',muted:'#a1a1aa',line:'#3f3f46',panel:'#18181b',accent:'#93c5fd'},

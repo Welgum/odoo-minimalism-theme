@@ -1,8 +1,8 @@
-# Minimalism — Odoo 19 Community backend theme
+# Minimalism — Odoo 16 Community backend theme
 
 A calmer Odoo workspace inspired by [shadcn/ui](https://ui.shadcn.com): neutral zinc surfaces, fine borders, rounded controls, clear typography and restrained accents. Built by [RivetFox](https://rivetfox.pro), with native Odoo views and Owl controls.
 
-![Minimalism in Odoo 19](minimalism_theme/static/description/cover.png)
+![Minimalism in Odoo 16](minimalism_theme/static/description/cover.png)
 
 - Personal light/dark mode in the top bar, without reloading or losing open work.
 - Seven shared accent presets, managed by Settings administrators.
@@ -10,17 +10,30 @@ A calmer Odoo workspace inspired by [shadcn/ui](https://ui.shadcn.com): neutral 
 - Native dark styles for forms, lists, kanban, Discuss, Calendar, CRM, Project and standard graph/pivot views.
 - No external fonts, CDNs, React, Tailwind or additional Python packages.
 
-## Supported release
+## Supported versions
 
-| Odoo | Edition | Module | Release |
-| --- | --- | --- | --- |
-| 19.0 | Community, self-hosted | `minimalism_theme` | `19.0.1.0.1` |
+All releases target self-hosted Odoo Community. Choose the matching branch; the technical module name is `minimalism_theme` on every version.
 
-Odoo 16–18 are outside this release. The source is local; no GitHub repository or marketplace listing has been published by this task.
+| Odoo | Branch | Release |
+| --- | --- | --- |
+| 16.0 | [16.0](https://github.com/Welgum/odoo-minimalism-theme/tree/16.0) | `16.0.1.0.0` |
+| 17.0 | [17.0](https://github.com/Welgum/odoo-minimalism-theme/tree/17.0) | `17.0.1.0.0` |
+| 18.0 | [18.0](https://github.com/Welgum/odoo-minimalism-theme/tree/18.0) | `18.0.1.0.0` |
+| 19.0 | [19.0](https://github.com/Welgum/odoo-minimalism-theme/tree/19.0) | `19.0.1.1.0` |
+
+This checkout targets **Odoo 16**. `main` follows `19.0`. Each branch includes its own compatibility adapters, real screenshots and validation record.
 
 ## Install
 
-1. Extract `dist/minimalism_theme-19.0.1.0.1.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
+Download only the matching add-on into your add-ons directory (example for this branch):
+
+```sh
+curl -fsSL https://codeload.github.com/Welgum/odoo-minimalism-theme/tar.gz/refs/heads/16.0 | tar -xz --strip-components=1 odoo-minimalism-theme-16.0/minimalism_theme
+```
+
+Or clone the source with `git clone --branch 16.0 --single-branch https://github.com/Welgum/odoo-minimalism-theme.git`. Then:
+
+1. Extract `dist/minimalism_theme-16.0.1.0.0.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
 2. Confirm the deployable path is `ADDONS_PATH/minimalism_theme/__manifest__.py`.
 3. Restart Odoo, update the Apps list in developer mode, remove the **Apps** filter, and install **Minimalism Backend Theme**.
 
@@ -50,15 +63,15 @@ Stylesheets load before being activated. Failed or timed-out loads retain the la
 
 ## Development and validation
 
-`./tools/dev_setup.sh` provisions a disposable local Docker stack (Odoo 19 and PostgreSQL 17, admin/admin) on loopback port 19069. Set `MIN_DEV_PORT` to use another port. Its database and filestore live under ignored `dist/compose/`. Stop it with `docker compose stop`; do not point the regression tools at production.
+`./tools/dev_setup.sh` provisions a disposable local Docker stack (Odoo 16 and PostgreSQL 17, admin/admin) on loopback port 19066. Set `MIN_DEV_PORT` to use another port. Its database and filestore live under ignored `dist/compose/`. Stop it with `docker compose stop`; do not point the regression tools at production.
 
 ```sh
 npm ci
 npx playwright install chromium
 npm test
 # Disposable database only; these suites create fixtures and change shared settings.
-export MIN_TEST_URL=http://127.0.0.1:19069
-export MIN_TEST_DB=minimalism19
+export MIN_TEST_URL=http://127.0.0.1:19066
+export MIN_TEST_DB=minimalism16
 export MIN_ALLOW_TEST_WRITES=1
 npm run test:browser
 npm run capture
@@ -84,4 +97,4 @@ The covers, portrait catalog thumbnails and feature animations share RivetFox’
 
 Regenerate with `node tools/render_marketplace.cjs`, build with `python3 tools/build_release.py`, then validate all scenes and encoded animations with `node tools/check_marketplace.cjs` (Playwright, Chrome and FFmpeg required). The renderer reads the Odoo version from the manifest and uses that checkout’s own real screenshots.
 
-Build an offline side-by-side preview with `python3 tools/preview_family.py`. It uses the sibling Neo Brutal checkout by default. Repeat `--neo-theme PATH` to include more version checkouts (Odoo 19 first, then 16–18). Open `dist/brand-preview/index.html`; it embeds the actual GIFs, supports pausing motion and needs no server or network.
+Build an offline side-by-side preview with `python3 tools/preview_family.py`. It uses the sibling Neo Brutal checkout by default. Repeat `--neo-theme PATH` to include more version checkouts (the matching Neo Brutal version first). Open `dist/brand-preview/index.html`; it embeds the actual GIFs, supports pausing motion and needs no server or network.
