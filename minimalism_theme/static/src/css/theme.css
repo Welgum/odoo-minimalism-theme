@@ -205,7 +205,7 @@
     .o_web_client.o_min_theme .o_form_statusbar { background: var(--min-surface); border-bottom-color: var(--min-line); }
     .o_web_client.o_min_theme .o_statusbar_status .o_arrow_button { font-weight: 500; }
     .o_web_client.o_min_theme .o_notebook .nav-tabs { background: var(--min-surface); border-bottom: 1px solid var(--min-border); gap: 0.25rem; }
-    .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link { color: var(--min-muted); font-weight: 500; border-radius: 0.375rem 0.375rem 0 0; }
+    .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link { transition: box-shadow 120ms ease; color: var(--min-muted); font-weight: 500; border-radius: 0.375rem 0.375rem 0 0; }
     .o_web_client.o_min_theme .o_notebook .nav-tabs .nav-link.active {
         background: var(--min-surface); color: var(--min-ink); border-color: transparent;
         box-shadow: inset 0 -2px 0 var(--min-accent);

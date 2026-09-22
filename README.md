@@ -10,17 +10,30 @@ A calmer Odoo workspace inspired by [shadcn/ui](https://ui.shadcn.com): neutral 
 - Native dark styles for forms, lists, kanban, Discuss, Calendar, CRM, Project and standard graph/pivot views.
 - No external fonts, CDNs, React, Tailwind or additional Python packages.
 
-## Supported release
+## Supported versions
 
-| Odoo | Edition | Module | Release |
-| --- | --- | --- | --- |
-| 19.0 | Community, self-hosted | `minimalism_theme` | `19.0.1.0.1` |
+All releases target self-hosted Odoo Community. Choose the matching branch; the technical module name is `minimalism_theme` on every version.
 
-Odoo 16–18 are outside this release. The source is local; no GitHub repository or marketplace listing has been published by this task.
+| Odoo | Branch | Release |
+| --- | --- | --- |
+| 16.0 | [16.0](https://github.com/Welgum/odoo-minimalism-theme/tree/16.0) | `16.0.1.0.0` |
+| 17.0 | [17.0](https://github.com/Welgum/odoo-minimalism-theme/tree/17.0) | `17.0.1.0.0` |
+| 18.0 | [18.0](https://github.com/Welgum/odoo-minimalism-theme/tree/18.0) | `18.0.1.0.0` |
+| 19.0 | [19.0](https://github.com/Welgum/odoo-minimalism-theme/tree/19.0) | `19.0.1.1.0` |
+
+This checkout targets **Odoo 19**. `main` follows `19.0`. Each branch includes its own compatibility adapters, real screenshots and validation record.
 
 ## Install
 
-1. Extract `dist/minimalism_theme-19.0.1.0.1.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
+Download only the matching add-on into your add-ons directory (example for this branch):
+
+```sh
+curl -fsSL https://codeload.github.com/Welgum/odoo-minimalism-theme/tar.gz/refs/heads/19.0 | tar -xz --strip-components=1 odoo-minimalism-theme-19.0/minimalism_theme
+```
+
+Or clone the source with `git clone --branch 19.0 --single-branch https://github.com/Welgum/odoo-minimalism-theme.git`. Then:
+
+1. Extract `dist/minimalism_theme-19.0.1.1.0.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
 2. Confirm the deployable path is `ADDONS_PATH/minimalism_theme/__manifest__.py`.
 3. Restart Odoo, update the Apps list in developer mode, remove the **Apps** filter, and install **Minimalism Backend Theme**.
 

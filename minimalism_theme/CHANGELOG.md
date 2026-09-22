@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.0.1.1.0 — 2026-09-22
+
+- Keep notebook tab text and surfaces in sync during appearance changes to avoid transient contrast loss.
+- Publish explicit Odoo 16, 17, 18 and 19 release branches; main continues to target Odoo 19.
+- Add matching-version installation and publishing instructions, repeatable validation and screenshot capture safeguards.
+
 ## 19.0.1.0.1 — 2026-09-22
 
 - Add the RivetFox website fox and wordmark consistently to marketplace covers, portrait thumbnails and feature GIFs.

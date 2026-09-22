@@ -1,7 +1,7 @@
 {
     "name": "Minimalism Backend Theme",
     "summary": "Odoo 19 Community backend theme with dark mode and seven accent colors",
-    "version": "19.0.1.0.1",
+    "version": "19.0.1.1.0",
     "category": "Themes/Backend",
     "author": "RivetFox",
     "website": "https://rivetfox.pro",

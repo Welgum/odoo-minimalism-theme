@@ -48,8 +48,16 @@ const output = path.resolve(__dirname, '../minimalism_theme/static/description')
             await page.evaluate(() => document.fonts.ready);
             await page.waitForFunction(() => [...document.images].every(image =>
                 !image.getClientRects().length || (image.complete && image.naturalWidth > 0)));
-            await page.evaluate(() => document.activeElement?.blur());
             await page.mouse.move(1430, 950);
+            if (['backend-list.png', 'night-mode.png'].includes(filename)) {
+                // Legacy hash navigation may still show the previous list briefly.
+                // Wait for this action's complete fixture, not merely any old row.
+                await page.waitForFunction(expected => {
+                    const rows = [...document.querySelectorAll('.o_list_table .o_data_row')];
+                    return rows.length === expected.length && expected.every((name, index) => rows[index].innerText.includes(name));
+                }, names);
+            }
+            await page.evaluate(() => document.activeElement?.blur());
             await page.screenshot({path: path.join(output, filename), animations: 'disabled'});
             console.log(`Captured ${filename}`);
         };
@@ -84,8 +92,10 @@ const output = path.resolve(__dirname, '../minimalism_theme/static/description')
         await page.goto(actionUrl(action, menus.menu_contacts));
         await page.waitForSelector('.o_list_table .o_data_row');
         await setMode('light');
+        await page.waitForSelector('.o_list_table .o_data_row');
         await capture('backend-list.png');
         await setMode('dark');
+        await page.waitForSelector('.o_list_table .o_data_row');
         await capture('night-mode.png');
         await setMode('light');
         await page.locator('.o_list_table .o_data_row').first().click();

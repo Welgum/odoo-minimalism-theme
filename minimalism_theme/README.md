@@ -10,7 +10,9 @@ Personal preferences are stored in this browser, isolated by origin, database an
 
 No external services, fonts, React or Tailwind runtime are required. Example contacts and optional apps shown in screenshots are not installed by the theme.
 
-Backend only. Website, portal, POS, login and PDF reports are outside scope. Odoo 16–18, Enterprise, Odoo.sh, Studio, spreadsheets, specialized editors, RTL and coexistence with other backend themes are unverified. Use one backend theme at a time. Odoo Online cannot install filesystem add-ons.
+Backend only. Website, portal, POS, login and PDF reports are outside scope. Enterprise, Odoo.sh, Studio, spreadsheets, specialized editors, RTL and coexistence with other backend themes are unverified. Use one backend theme at a time. Odoo Online cannot install filesystem add-ons.
+
+This checkout supports Odoo 19. Separate `16.0`, `17.0`, `18.0` and `19.0` branches are available at https://github.com/Welgum/odoo-minimalism-theme. Install the matching branch.
 
 For updates, restart and upgrade the module to rebuild assets. See `VALIDATION.md` for tested coverage. LGPL-3.0-or-later; applicable attributions are in `THIRD_PARTY_NOTICES.md`.
 

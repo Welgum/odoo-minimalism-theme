@@ -1,3 +1,4 @@
+name: minimalism-theme-19
 # Local disposable development stack. Bind mounts avoid consuming Docker's disk.
 services:
   db:

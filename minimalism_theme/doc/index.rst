@@ -28,7 +28,7 @@ Compatibility
 
 Self-hosted Odoo 19 Community backend only. Optional applications and fictional
 records shown in screenshots are not installed. Website, portal, POS, login
-and PDF reports are outside scope. Other Odoo versions, Enterprise, Studio,
+and PDF reports are outside scope. Use the matching version branch; Enterprise, Studio,
 Odoo.sh, specialized editors, spreadsheets, RTL and simultaneous backend themes
 are unverified. Odoo Online cannot install filesystem add-ons.
 
