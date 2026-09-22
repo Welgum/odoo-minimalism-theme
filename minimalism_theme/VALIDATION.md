@@ -1,4 +1,18 @@
-# Validation — Minimalism 19.0.1.0.0
+# Validation — 19.0.1.0.1
+
+## RivetFox marketplace artwork — 2026-09-22
+
+This release updates promotional assets, rendering tools and package metadata. The runtime implementation and Odoo-version adapters are unchanged; the application tests documented below describe the preceding functional release and were not rerun for this artwork update.
+
+- All four GIFs decode completely with FFmpeg. Checked 1120 × 560 covers, 1000 × 1210 portrait cards and 1120 × 760 feature animations; encoded durations remain 3.00, 3.00, 2.67 and 4.67 seconds.
+- Playwright checks cover every scene, the composition at loop reset (allowing only tiny antialiased-edge rounding differences), correct Odoo 19 labels, and locally decoded RivetFox artwork and fonts. Renderer pages make no external requests and report no JavaScript errors.
+- Listing and thumbnail previews load all images without horizontal overflow at 1440px and 390px. The shared theme-family preview was also reviewed at catalog-card size.
+- The release builder validates manifest/image selection, static listing markup, asset paths, Python/XML syntax and ZIP integrity. Two builds of the final source produce identical SHA-256 checksums.
+- The shared fox and local render-font license are retained under `tools/branding/`. Only raster promotional assets enter the add-on; no additional runtime font, script or dependency is introduced.
+
+The original Odoo screenshot inputs are unchanged.
+
+Reproduce with `node tools/render_marketplace.cjs`, `python3 tools/build_release.py`, then `node tools/check_marketplace.cjs`. Logs and review PNGs are under ignored `dist/`. These are local checks; this update has not been pushed, scanned by Odoo Apps or published.
 
 Validated on **2026-09-22** against self-hosted **Odoo Community 19.0-20260908** (official `odoo:19.0`, arm64), PostgreSQL **17.7**, and desktop Google Chrome **153.0.8010.53** driven by Playwright **1.58.2**. Node **20.20.0** ran the pure preference tests.
 

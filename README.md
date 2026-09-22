@@ -14,13 +14,13 @@ A calmer Odoo workspace inspired by [shadcn/ui](https://ui.shadcn.com): neutral 
 
 | Odoo | Edition | Module | Release |
 | --- | --- | --- | --- |
-| 19.0 | Community, self-hosted | `minimalism_theme` | `19.0.1.0.0` |
+| 19.0 | Community, self-hosted | `minimalism_theme` | `19.0.1.0.1` |
 
 Odoo 16–18 are outside this release. The source is local; no GitHub repository or marketplace listing has been published by this task.
 
 ## Install
 
-1. Extract `dist/minimalism_theme-19.0.1.0.0.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
+1. Extract `dist/minimalism_theme-19.0.1.0.1.zip` into your configured add-ons directory, or add this repository root to `addons_path`.
 2. Confirm the deployable path is `ADDONS_PATH/minimalism_theme/__manifest__.py`.
 3. Restart Odoo, update the Apps list in developer mode, remove the **Apps** filter, and install **Minimalism Backend Theme**.
 
@@ -77,3 +77,11 @@ After updating source, restart Odoo and upgrade `minimalism_theme` so Odoo regen
 Backend only: website/eCommerce, portal, POS, login and PDF reports are outside scope. Enterprise, Odoo.sh, Studio, spreadsheets, specialized editors, RTL and third-party backend themes have not been certified. Use one backend theme at a time; this module never uninstalls another module automatically. Odoo Online does not accept filesystem add-ons.
 
 LGPL-3.0-or-later. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). MuK informed edge-case review only; no MuK source or assets are bundled. The behavioral foundation adapts our earlier Neobrutalism theme with independent namespacing and a new visual implementation.
+
+## RivetFox marketplace artwork
+
+The covers, portrait catalog thumbnails and feature animations share RivetFox’s orange fox and lowercase wordmark. Source artwork and licensed local render fonts live in `tools/branding/`; the Odoo interface does not load them. See `tools/branding/README.md` for provenance.
+
+Regenerate with `node tools/render_marketplace.cjs`, build with `python3 tools/build_release.py`, then validate all scenes and encoded animations with `node tools/check_marketplace.cjs` (Playwright, Chrome and FFmpeg required). The renderer reads the Odoo version from the manifest and uses that checkout’s own real screenshots.
+
+Build an offline side-by-side preview with `python3 tools/preview_family.py`. It uses the sibling Neo Brutal checkout by default. Repeat `--neo-theme PATH` to include more version checkouts (Odoo 19 first, then 16–18). Open `dist/brand-preview/index.html`; it embeds the actual GIFs, supports pausing motion and needs no server or network.

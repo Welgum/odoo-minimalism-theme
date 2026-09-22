@@ -1,8 +1,45 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><title>Minimalism — appearance comparison</title><style>*{box-sizing:border-box}body{margin:0;width:1120px;height:760px;background:#fafafa;color:#18181b;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}.top{height:123px;padding:28px 40px;display:flex;align-items:center;justify-content:space-between}h1{font-size:28px;letter-spacing:-1px;font-weight:600;margin:0}p{color:#71717a;font-size:14px;margin:5px 0 0}.label{border:1px solid #d4d4d8;border-radius:20px;padding:6px 15px;background:white;font-size:13px}.frame{margin:0 40px;width:1040px;height:593px;overflow:hidden;border:1px solid #d4d4d8;border-radius:10px;box-shadow:0 8px 30px #18181b08}img{display:block;width:100%}.foot{position:absolute;bottom:10px;width:100%;text-align:center;color:#71717a;font-size:11px}</style><body><div class="top"><div><h1 id="title">A workspace for every hour.</h1><p id="subtitle">Personal light and dark mode. Your open work stays right where it is.</p></div><span class="label" id="label">Light mode</span></div><div class="frame"><img id="screen" alt="Real Odoo appearance comparison"></div><div class="foot">Minimalism · Odoo 19 Community · Animated comparison of real product captures</div><script>
-const accents=new URLSearchParams(location.search).get('type')==='accents';
-const names=accents?['Yellow','Blue','Green','Purple','Pink','Orange','Red']:['Light mode','Dark mode'];
-const files=accents?names.map(n=>'screens/preset-'+n.toLowerCase()+'.png'):['../../minimalism_theme/static/description/backend-list.png','../../minimalism_theme/static/description/night-mode.png'];
-files.forEach(src=>{const img=new Image();img.src=src});
-if(accents){document.querySelector('#title').textContent='One palette. A shared identity.';document.querySelector('#subtitle').textContent='Seven administrator-managed accents. Quiet surfaces in every preset.';}
-window.renderFrame=async t=>{const i=Math.floor(t/(accents?2:4))%files.length;document.querySelector('#label').textContent=names[i];const img=document.querySelector('#screen');img.src=files[i];await img.decode();};
-</script></body></html>
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Minimalism — real appearance comparisons</title>
+<link rel="stylesheet" href="../branding/brand.css">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif}.canvas{--paper:#fafafa;--ink:#18181b;--muted:#65656f;--line:#d4d4d8;--panel:#fff;position:relative;width:1120px;height:760px;overflow:hidden;background:var(--paper);color:var(--ink)}
+.header{position:absolute;inset:30px 36px auto;display:flex;justify-content:space-between;align-items:center}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:500;color:var(--muted)}h1{font-family:"RivetFox Brand",Arial,sans-serif;font-size:38px;font-weight:600;letter-spacing:-1.8px;margin:12px 0 0;line-height:1.15}.modes{display:flex;padding:4px;background:var(--panel);border:1px solid var(--line);border-radius:30px;gap:4px}.modes span{padding:10px 16px;font-size:13px;border-radius:30px;color:var(--muted)}.modes .active{background:var(--ink);color:var(--paper)}
+.screen{position:absolute;left:36px;top:130px;width:1048px;height:567px;border:1px solid var(--line);border-radius:12px;background:var(--panel);box-shadow:0 10px 28px #00000012;overflow:hidden}.screenbar{height:30px;padding:8px 14px;background:var(--panel);color:var(--muted);border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.7px}.screenbody{position:relative;overflow:hidden;height:calc(100% - 30px)}.screen img{position:absolute;left:0;top:0;width:100%;display:block}.reveal-line{position:absolute;top:0;bottom:0;width:2px;left:0;background:#93c5fd;display:none}
+.footer{position:absolute;left:36px;right:36px;bottom:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.4px;color:var(--muted)}
+.accent .header{display:block}.accent h1{font-size:41px}.description{font-size:16px;color:var(--muted);margin:12px 0 0}.number{position:absolute;top:42px;right:36px;font-family:"RivetFox Brand",Arial,sans-serif;font-size:26px;color:var(--muted)}
+.accent .screen{left:306px;top:190px;width:778px;height:476px}.accent .screenbar{font-weight:500;color:var(--ink)}.presets{position:absolute;left:36px;top:190px;width:244px;display:grid;gap:10px}.preset{display:flex;gap:13px;align-items:center;height:51px;padding:8px 13px;border:1px solid transparent;border-radius:10px;font-size:17px;color:var(--muted)}.preset i{display:block;width:25px;height:25px;border-radius:50%;background:var(--swatch);border:1px solid #18181b20}.preset.active{background:white;border-color:var(--line);color:var(--ink);box-shadow:0 2px 5px #00000008}.preset.active:after{content:'✓';margin-left:auto;font-size:16px}
+</style>
+<div class="canvas" id="daynight">
+ <div class="header"><div><div class="eyebrow">PERSONAL LIGHT + DARK</div><h1>A workspace for every hour.</h1></div><div class="modes"><span id="day-label" class="active">LIGHT</span><span id="night-label">DARK</span></div></div>
+ <div class="screen"><div class="screenbar">MINIMALISM / YOUR EVERYDAY ODOO</div><div class="screenbody"><img src="../../minimalism_theme/static/description/backend-list.png" alt="Actual Contacts list in light mode"><img id="night-screen" src="../../minimalism_theme/static/description/night-mode.png" alt="The same Contacts view in dark mode" style="clip-path:inset(0 100% 0 0)"><div class="reveal-line" id="reveal-line"></div></div></div>
+ <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>19</span> COMMUNITY SCREENS</span></div>
+</div>
+<div class="canvas accent" id="accents" style="display:none">
+ <div class="header"><div class="eyebrow">ADMINISTRATOR-MANAGED PRESETS</div><h1>One workspace. Seven accents.</h1><p class="description">A shared accent. Quiet surfaces. Your own light or dark mode.</p></div><div class="number" id="counter">01 / 07</div>
+ <div class="presets" id="presets"></div>
+ <div class="screen"><div class="screenbar" id="accent-title">YELLOW / LIGHT MODE</div><div class="screenbody"><img id="accent-screen" src="screens/preset-yellow.png" alt="Real Odoo Contacts with the selected accent"></div></div>
+ <div class="footer"><div class="rf-lockup rf-mini"><img src="../branding/rivetfox-mark.svg" alt="RivetFox fox"><span class="rf-wordmark">rivetfox<span class="rf-period">.</span></span></div><span>REAL ODOO <span data-odoo-version>19</span> COMMUNITY SCREENS</span></div>
+</div>
+<script>
+const params=new URLSearchParams(location.search),accentMode=params.get('type')==='accents';
+document.querySelectorAll('[data-odoo-version]').forEach(el=>el.textContent=params.get('odoo')||'19');
+document.querySelector('#daynight').style.display=accentMode?'none':'block';document.querySelector('#accents').style.display=accentMode?'block':'none';
+const presets=[['yellow','#eab308'],['blue','#2563eb'],['green','#15803d'],['purple','#7c3aed'],['pink','#db2777'],['orange','#c2410c'],['red','#dc2626']];
+document.querySelector('#presets').innerHTML=presets.map(([name,color])=>`<div class="preset"><i style="--swatch:${color}"></i>${name[0].toUpperCase()+name.slice(1)}</div>`).join('');
+window.renderFrame=async time=>{
+ const title=document.querySelector(accentMode?'#accents h1':'#daynight h1');const phase=(time%(accentMode?14:8))/.85;title.style.transform=`translateY(${-3*(phase<1?Math.sin(Math.PI*phase)**2:0)}px)`;
+ if(accentMode){
+  const i=Math.floor(time/2)%7,[name]=presets[i];document.querySelectorAll('.preset').forEach((el,n)=>el.classList.toggle('active',i===n));
+  document.querySelector('#counter').textContent=`0${i+1} / 07`;document.querySelector('#accent-title').textContent=name.toUpperCase()+' / LIGHT MODE';
+  const img=document.querySelector('#accent-screen');img.src='screens/preset-'+name+'.png';await img.decode();
+ }else{
+  const t=time%8;let f=t<3?0:t<3.5?(t-3)*2:t<7?1:1-(t-7);f=f*f*(3-2*f);
+  document.querySelector('#night-screen').style.clipPath=`inset(0 ${(1-f)*100}% 0 0)`;
+  const line=document.querySelector('#reveal-line');line.style.left=`${f*100}%`;line.style.display=f>0&&f<1?'block':'none';
+  document.querySelector('#day-label').classList.toggle('active',f<.5);document.querySelector('#night-label').classList.toggle('active',f>=.5);
+  const colors=f<.5?['#fafafa','#18181b','#65656f','#d4d4d8','#ffffff']:['#09090b','#fafafa','#a1a1aa','#3f3f46','#18181b'];
+  ['paper','ink','muted','line','panel'].forEach((name,i)=>document.querySelector('#daynight').style.setProperty('--'+name,colors[i]));
+  await Promise.all([...document.querySelectorAll('#daynight img')].map(i=>i.decode()));
+ }
+};
+</script></html>
